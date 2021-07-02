@@ -45,15 +45,15 @@ if(isset($_POST['update']))
                     <input type="hidden" name="id" value="<?= $currentCustomer['id'] ?>">
                     <div class="form-group">
                         <label for="">Name</label>
-                        <input type="text" name="name" value="<?= $currentCustomer['name'] ?>" class="form-control">
+                        <input type="text" name="name" value="<?= $currentCustomer['name'] ?>" class="form-control" required>
                     </div>
                     <div class="form-group">
                         <label for="">Phone</label>
-                        <input type="text" name="phone" value="<?= $currentCustomer['phone'] ?>" class="form-control">
+                        <input type="tel" name="phone" value="<?= $currentCustomer['phone'] ?>" class="form-control" required>
                     </div>
                     <div class="form-group">
                         <label for="">Email</label>
-                        <input type="text" name="email" value="<?= $currentCustomer['email'] ?>" class="form-control">
+                        <input type="email" name="email" value="<?= $currentCustomer['email'] ?>" class="form-control" required>
                     </div>
                     <div class="text-right">
                         <input type="submit" name="update" class="btn btn-primary" value="Add">

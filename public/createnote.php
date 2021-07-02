@@ -40,7 +40,7 @@ if(isset($_POST['add']))
                     <div class="form-group">
                         <label for="">Note</label>
                         <input type="hidden" value="<?= $_GET['id'] ?>" name="id">
-                        <textarea name="note" class="form-control" id="" cols="30" rows="10"></textarea>
+                        <textarea name="note" class="form-control" id="" cols="30" rows="10" required></textarea>
                     </div>
                     <div class="text-right">
                         <input type="submit" name="add" class="btn btn-primary" value="Add">

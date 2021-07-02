@@ -15,16 +15,11 @@ class Customer extends Database {
 
     public function create($name,$phone,$email)
     {
-        $userInput = [
-            $name,
-            $phone,
-            $email
-        ];
+        Validation::cleanData($name);
+        if(Validation::checkPhone($phone) !== true) return false;
+        if(Validation::checkEmail($email) !== true) return false;
 
-        foreach($userInput as $validateInput)
-        {
-            Validation::cleanData($validateInput);
-        }
+
 
         try {
             $query = "INSERT INTO CustomerList (name, phone, email) VALUES (:name,:phone,:email)";
@@ -89,16 +84,10 @@ class Customer extends Database {
 
     public function updateCustomer($name,$phone,$email,$id)
     {
-        $userInput = [
-            $name,
-            $phone,
-            $email
-        ];
+        Validation::cleanData($name);
+        if(Validation::checkPhone($phone) !== true) return false;
+        if(Validation::checkEmail($email) !== true) return false;
 
-        foreach($userInput as $validateInput)
-        {
-            Validation::cleanData($validateInput);
-        }
 
         try {
             $query = "UPDATE CustomerList SET name = :name, phone = :phone, email = :email WHERE id = :id ";
