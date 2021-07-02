@@ -15,6 +15,17 @@ class Customer extends Database {
 
     public function create($name,$phone,$email)
     {
+        $userInput = [
+            $name,
+            $phone,
+            $email
+        ];
+
+        foreach($userInput as $validateInput)
+        {
+            Validation::cleanData($validateInput);
+        }
+
         try {
             $query = "INSERT INTO CustomerList (name, phone, email) VALUES (:name,:phone,:email)";
             $stmt = $this->getConnection()->prepare($query);
@@ -48,6 +59,9 @@ class Customer extends Database {
 
     public function search($term)
     {
+
+        Validation::cleanData($term);
+
         try {
             $query = "SELECT * FROM CustomerList WHERE name LIKE CONCAT(:term, '%')";
             $stmt = $this->getConnection()->prepare($query);
@@ -75,6 +89,17 @@ class Customer extends Database {
 
     public function updateCustomer($name,$phone,$email,$id)
     {
+        $userInput = [
+            $name,
+            $phone,
+            $email
+        ];
+
+        foreach($userInput as $validateInput)
+        {
+            Validation::cleanData($validateInput);
+        }
+
         try {
             $query = "UPDATE CustomerList SET name = :name, phone = :phone, email = :email WHERE id = :id ";
             $stmt = $this->getConnection()->prepare($query);
